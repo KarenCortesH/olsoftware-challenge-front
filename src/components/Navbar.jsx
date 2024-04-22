@@ -1,7 +1,23 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { FaBars, FaBell, FaSearch, FaUserCircle } from 'react-icons/fa'
+import axios from 'axios';
 
 export const Navbar = ({ sidebarToggle, setSidebarToggle }) => {
+  const [notification, setNotification] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:4000/notification');
+        setNotification(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <nav className='bg-slate-100 px-4 py-3 flex justify-between'>
       <div className='flex items-center text-xl'>
@@ -11,7 +27,12 @@ export const Navbar = ({ sidebarToggle, setSidebarToggle }) => {
       </div>
       <div className='flex items-center gap-x-5'>
         <div>
-          <nav className='text-gray-700'><FaBell className='w-6 h-6'></FaBell></nav>
+          <nav className='text-gray-700' onClick={() => { if (notification) { /* handle notification click */ } }}>
+            <FaBell className='w-6 h-6'></FaBell>
+            {notification && notification.unread_count > 0 && (
+              <span className='absolute top-0 right-0 bg-red-500 text-white rounded-full px-2 py-1 text-xs'>{notification.unread_count}</span>
+            )}
+          </nav>
         </div>
         <div className='relative'>
           <button className='text-gray-700 group'>

@@ -25,7 +25,7 @@ const Login = () => {
 
     // Si loggedIn es true, redirigir al usuario a la página Home
     if (loggedIn) {
-        navigate('/home');
+        navigate('/dashboard');
     }
 
     return (
