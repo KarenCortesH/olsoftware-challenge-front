@@ -1,9 +1,10 @@
 import React from 'react';
-import { FaHome, FaRegUser } from 'react-icons/fa';
+import { FaRegUser } from 'react-icons/fa';
 import { GoProjectSymlink } from 'react-icons/go';
 import { GrProjects } from 'react-icons/gr';
 import { PiUsersFour } from 'react-icons/pi';
 import logo from '../assets/logo.png'
+import { Link } from 'react-router-dom';
 
 export const Sidebar = ({ sidebarToggle }) => {
   return (
@@ -14,19 +15,19 @@ export const Sidebar = ({ sidebarToggle }) => {
       <hr />
       <ul className='mt-3 text-gray-500 font-bold'>
         <li className='mb-2 rounded hover:shadow hover:bg-indigo-700  hover:text-white py-2'>
-          <a href="#" className='px-3 flex items-center'>
+        <Link to="/dashboard" className='px-3 flex items-center'>
             <GrProjects className='w-6 h-6 mr-2 -mt-1' />
             Dashboard
-          </a>
+          </Link>
         </li>
       </ul>
 
       <ul className='mt-3 text-gray-500 font-bold'>
         <li className='mb-2 rounded hover:shadow hover:bg-indigo-700  hover:text-white py-2'>
-          <a href="#" className='px-3 flex items-center'>
+        <Link to="/projects" className='px-3 flex items-center'>
             <GoProjectSymlink className='w-6 h-6 mr-2 -mt-1' />
             Proyectos
-          </a>
+          </Link>
         </li>
       </ul>
 
