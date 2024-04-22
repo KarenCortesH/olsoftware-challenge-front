@@ -1,0 +1,4 @@
+#Ignorar components
+node_modules
+.dockerignore
+Dockerfile
