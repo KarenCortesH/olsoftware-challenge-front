@@ -1,7 +1,7 @@
-import React from 'react'
-import { Navbar } from './Navbar'
+import React from 'react';
+import { Navbar } from './Navbar';
 
-export const Dashboard = ({ sidebarToggle, setSidebarToggle }) => {
+const DashboardNavbar = ({ sidebarToggle, setSidebarToggle }) => {
     return (
         <div className={`${sidebarToggle ? "" : "ml-64"} w-full`}>
             <Navbar
@@ -9,4 +9,6 @@ export const Dashboard = ({ sidebarToggle, setSidebarToggle }) => {
                 setSidebarToggle={setSidebarToggle} />
         </div>
     );
-}
+};
+
+export default DashboardNavbar;

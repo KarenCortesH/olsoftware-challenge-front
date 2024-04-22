@@ -1,7 +1,7 @@
 import React, { useState } from 'react'; // Asegúrate de importar useState desde 'react'
 import { Sidebar } from '../components/Sidebar';
-import { Dashboard } from '../components/Dashboard';
-import { Navbar } from '../components/Navbar';
+import DashboardNavbar from '../components/DashboardNavbar';
+
 
 function Home() {
     const [sidebarToggle, setSidebarToggle] = useState(false);
@@ -9,9 +9,9 @@ function Home() {
         <>
             <div className='flex'>
                 <Sidebar sidebarToggle={sidebarToggle}></Sidebar>
-                <Dashboard
+                <DashboardNavbar
                     sidebarToggle={sidebarToggle}
-                    setSidebarToggle={setSidebarToggle}></Dashboard>
+                    setSidebarToggle={setSidebarToggle}></DashboardNavbar>
             </div>
         </>
     );

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BiSolidCircle, BiCheck } from "react-icons/bi";
 import { FaEraser } from "react-icons/fa";
-import { CiEdit } from "react-icons/ci";
 import axios from 'axios';
 import Modal from '../components/Modal';
 import { Sidebar } from '../components/Sidebar';
@@ -76,7 +75,7 @@ const Projects = () => {
                 <Navbar />
 
                 {/* Botón para abrir el modal */}
-                <div className="flex justify-end mt-4">
+                <div className="flex justify-end m-4">
                     <button
                         type="button"
                         onClick={openModal}

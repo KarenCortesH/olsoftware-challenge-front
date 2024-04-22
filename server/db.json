@@ -2025,25 +2025,21 @@
       "status": "En Desarrollo"
     },
     {
-      "id": "39a4",
+      "id": "981b",
       "project_name": "Pomodoro",
       "repo_url": "http://pomodoro",
       "client": "Pomodorito",
       "developers": [
-        "Developer A",
-        "Developer C"
+        "Developer B"
       ],
       "ci": true,
-      "cd": true,
       "frontend_tecnology": [
-        "React",
-        "VueJs"
+        "React"
       ],
       "backend_tecnology": [
-        "NodeJs",
-        "Java"
+        "NodeJs"
       ],
-      "databases": "Postgress",
+      "databases": "SQL",
       "errors_count": 0,
       "warning_count": 0,
       "deploy_count": 0,
