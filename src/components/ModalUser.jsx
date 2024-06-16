@@ -9,7 +9,9 @@ const ModalUser = ({ isOpen, onClose }) => {
         url_photo: '',
         rol: '',
         list: [],
-        area: ''
+        area: '',
+        username: '',
+        password: ''
     });
 
     const handleChange = ({ target }) => {
@@ -32,7 +34,7 @@ const ModalUser = ({ isOpen, onClose }) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            await axios.post('http://localhost:4000/users', formData);
+            await axios.post('http://localhost:4000/api/users', formData);
             setShowAlert(true);
             setTimeout(() => {
                 setShowAlert(false);
@@ -93,7 +95,6 @@ const ModalUser = ({ isOpen, onClose }) => {
                             type="text"
                             id="url_photo"
                             name="url_photo"
-                            required
                             value={formData.url_photo}
                             onChange={handleChange}
                             className="appearance-none block w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -109,8 +110,8 @@ const ModalUser = ({ isOpen, onClose }) => {
                             value={{ label: formData.rol, value: formData.rol }}
                             onChange={(selectedOption) => setFormData({ ...formData, rol: selectedOption.value })}
                             options={[
-                                { label: 'Admin', value: 'Admin' },
-                                { label: 'Dev', value: 'Dev' }
+                                { label: 'Admin', value: '1' },
+                                { label: 'Dev', value: '2' }
                             ]}
                         />
                     </div>
@@ -141,6 +142,34 @@ const ModalUser = ({ isOpen, onClose }) => {
                             name="area"
                             required
                             value={formData.area}
+                            onChange={handleChange}
+                            className="appearance-none block w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label htmlFor="username" className="block text-sm font-medium text-gray-700">
+                            Username
+                        </label>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            required
+                            value={formData.username}
+                            onChange={handleChange}
+                            className="appearance-none block w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label htmlFor="username" className="block text-sm font-medium text-gray-700">
+                            Passowrd
+                        </label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            required
+                            value={formData.password}
                             onChange={handleChange}
                             className="appearance-none block w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         />

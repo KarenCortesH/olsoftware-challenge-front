@@ -6,24 +6,29 @@ import axios from 'axios';
 import Clima from './Clima';
 import 'chart.js/auto';
 import CpuReport from './CpuReport';
+import Commits from './Commits';
 
 const DashboardContent = () => {
     const [sidebarToggle, setSidebarToggle] = useState(true);
     const [cardsData, setCardsData] = useState([]);
-    const [cpuData, setCpuData] = useState({});
+    // const [cpuData, setCpuData] = useState({});
     const [commitsData, setCommitsData] = useState({});
     const [releaseData, setReleaseData] = useState({});
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const cardsResponse = await axios.get('http://localhost:4000/dashboard_cards');
+				const token = localStorage.getItem('token'); // Obtener el token JWT almacenado en localStorage o sessionStorage
+                const headers = {
+                    Authorization: `Bearer ${token}`,
+                };
+                const cardsResponse = await axios.get('http://localhost:4000/api/dashboard_cards',{ headers });
                 setCardsData(cardsResponse.data);
 
-                const commitsResponse = await axios.get('http://localhost:4000/report_commits');
+                const commitsResponse = await axios.get('http://localhost:4000/api/report_commits',{ headers });
                 setCommitsData(commitsResponse.data);
 
-                const releaseResponse = await axios.get('http://localhost:4000/release_resume');
+                const releaseResponse = await axios.get('http://localhost:4000/api/release_resume',{ headers });
                 setReleaseData(releaseResponse.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -71,7 +76,7 @@ const DashboardContent = () => {
                             </div>
                         </div>
 
-                        {/* Contenedor de los últimos dos divs */}
+                        {/* Contenedor de los ultimo dos divs */}
                         <div className="flex flex-col w-1/4">
                             {/* Div 3 */}
                             <div className="overflow-y-auto bg-white rounded-lg p-4 max-w-screen-xl max-h-dvh mb-4">
@@ -103,9 +108,9 @@ const DashboardContent = () => {
                     </div>
                 </div>
                 <div className="ml-8">
-                    <h2>Gráfico de Commits</h2>
+                    <h2>Grafico de Commits</h2>
                     <div style={{ width: '800px', height: '400px' }}>
-                        {/* <Commits /> */}
+					<Commits commitsData={commitsData} />
                     </div>
                     <div className="flex justify-center">
                     </div>

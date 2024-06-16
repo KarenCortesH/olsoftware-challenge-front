@@ -346,6 +346,41 @@
       "id": "b968",
       "username": "test28@example.com",
       "password": "123KC*"
+    },
+    {
+      "id": "d141",
+      "username": "test28@example.com",
+      "password": "123KC*"
+    },
+    {
+      "username": "admin",
+      "password": "AQW23",
+      "id": "5yRyXE1"
+    },
+    {
+      "id": "f7b8",
+      "username": "test",
+      "password": "test123"
+    },
+    {
+      "id": "1fc9",
+      "username": "test",
+      "password": "test123"
+    },
+    {
+      "username": "test",
+      "password": "test1",
+      "id": "eP7qgx3"
+    },
+    {
+      "username": "hols",
+      "password": "hola",
+      "id": "JC8TMyJ"
+    },
+    {
+      "username": "test",
+      "password": "test",
+      "id": "Coab_TC"
     }
   ],
   "notification": [
@@ -2318,12 +2353,14 @@
   "users": [
     {
       "id": "1",
-      "name": "Camilla",
-      "last_name": "Wooten",
+      "name": "Karen",
+      "last_name": "Cortes",
       "url_photo": "",
       "rol": 1,
-      "list": "Java|.Net|Python|Angular|React-Native|VueJS|NodeJS|SQLServer",
-      "area": "Soporte"
+      "list": "VueJS|Angular|.Net|React-Native|React|Java|Python|SQLServer|NodeJS",
+      "area": "Desarrollo",
+      "username": "karenc",
+      "password": "$2a$10$s4ZqlU1yWFuGY1ADsXxOPuIRlIeNUYPFpbYOrTQdWzj9JIVtqtEp."
     },
     {
       "id": "2",
@@ -3217,15 +3254,29 @@
       "area": "Soporte"
     },
     {
-      "id": "0b89",
-      "name": "Karen ",
-      "last_name": "Cortes",
-      "url_photo": "asdsd",
-      "rol": "Dev",
+      "name": "John",
+      "last_name": "Lannister",
+      "url_photo": "",
+      "rol": "1",
       "list": [
         "React"
       ],
-      "area": "Desarrollo"
+      "area": "Desarrollo",
+      "username": "jl.test",
+      "password": "test123",
+      "id": "Pd6MjdQ"
+    },
+    {
+      "name": "aria",
+      "last_name": "stark",
+      "url_photo": "",
+      "rol": "1",
+      "list": [
+        "React"
+      ],
+      "area": "Desarrollo",
+      "username": "as.test",
+      "password": "$2a$08$MX8F7FU/6Dn3e/nc5d70BesW6rVeuwA74P4wRXaOrgpmmaZM.ZBO."
     }
   ]
 }

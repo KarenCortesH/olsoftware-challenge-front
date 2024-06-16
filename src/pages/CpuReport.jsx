@@ -10,7 +10,12 @@ const CpuReport = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/cpu_report');
+				const token = localStorage.getItem('token');
+                const response = await axios.get('http://localhost:4000/cpu_report',{
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				});
                 setCpuData(response.data);
             } catch (error) {
                 console.error('Error fetching CPU report data:', error);
@@ -31,7 +36,7 @@ const CpuReport = () => {
                 // Convertir la cadena de fecha a un objeto Date de JavaScript
                 const dateParts = entry.time.split('/');
                 const date = new Date(`${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`);
-                
+
                 dates.push(date);
                 sessions.push(entry.value);
                 projectsDeployed.push(entry.deploys);
@@ -49,7 +54,7 @@ const CpuReport = () => {
                 data: {
                     labels: dates,
                     datasets: [{
-                        label: 'Número total de sesiones',
+                        label: 'Numero total de sesiones',
                         data: sessions,
                         fill: false,
                         borderColor: 'rgb(75, 192, 192)',

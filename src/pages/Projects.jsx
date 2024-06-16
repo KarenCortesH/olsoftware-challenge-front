@@ -13,15 +13,24 @@ const Projects = () => {
     // Estado para controlar la apertura y cierre del modal
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-
     useEffect(() => {
         const fetchProjects = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/projects');
-                setProjects(response.data);
+                const token = localStorage.getItem('token');
+                const response = await axios.get('http://localhost:4000/projects', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                if (Array.isArray(response.data)) {
+                    setProjects(response.data);
+                } else {
+                    throw new Error('Data format incorrect');
+                }
                 setLoading(false);
             } catch (error) {
-                setError('Error al cargar los proyectos');
+                console.error('Error al cargar los proyectos', error);
+                setError(error?.response?.data?.message || 'Error al cargar los proyectos');
                 setLoading(false);
             }
         };
@@ -29,17 +38,15 @@ const Projects = () => {
         fetchProjects();
     }, []);
 
-    if (loading) {
-        return <div>Cargando...</div>;
-    }
-
-    if (error) {
-        return <div>{error}</div>;
-    }
     const handleDelete = async (projectId) => {
         try {
-            await axios.delete(`http://localhost:4000/projects/${projectId}`);
-            // Actualizar la lista de proyectos despuÃ©s de eliminar el proyecto
+            const token = localStorage.getItem('token');
+            await axios.delete(`http://localhost:4000/projects/${projectId}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            // Actualizar la lista de proyectos después de eliminar el proyecto
             const updatedProjects = projects.filter(project => project.id !== projectId);
             setProjects(updatedProjects);
         } catch (error) {
@@ -47,12 +54,12 @@ const Projects = () => {
         }
     };
 
-    // FunciÃ³n para abrir el modal
+    // Función para abrir el modal
     const openModal = () => {
         setIsModalOpen(true);
     };
 
-    // FunciÃ³n para cerrar el modal
+    // Función para cerrar el modal
     const closeModal = () => {
         setIsModalOpen(false);
     };
@@ -74,7 +81,7 @@ const Projects = () => {
             <div className="overflow-x-auto flex-grow">
                 <Navbar />
 
-                {/* BotÃ³n para abrir el modal */}
+                {/* Botón para abrir el modal */}
                 <div className="flex justify-end m-4">
                     <button
                         type="button"
@@ -85,7 +92,7 @@ const Projects = () => {
                     </button>
                 </div>
                 <Modal isOpen={isModalOpen} onClose={closeModal} />
-                <div className="overflow-y-auto bg-white rounded-lg p-4 max-w-screen-xl  max-h-dvh mx-0 ml-auto">
+                <div className="overflow-y-auto bg-white rounded-lg p-4 max-w-screen-xl max-h-dvh mx-0 ml-auto">
                     <h1 className="text-3xl font-sans mb-6">Lista de Proyectos registrados</h1>
                     <table className="w-full table-auto divide-y divide-gray-200 text-sm">
                         <thead className="bg-gray-50">
